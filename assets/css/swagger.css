@@ -1,0 +1,47 @@
+.swagger-ui .model {
+  font-size: 16px;
+}
+.swagger-ui .model .property {
+  font-style: inherit;
+}
+.swagger-ui .opblock .opblock-summary-description {
+  font-size: 18px;
+}
+.swagger-ui code,
+.swagger-ui kbd,
+.swagger-ui samp {
+  font-size: 16px;
+}
+* {
+  font-family: Helvetica, Arial, 微软雅黑;
+  font-size: 16px;
+}
+.swagger-ui table.model tr.property-row .star {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 25px;
+  color: #f00;
+}
+.swagger-ui .parameter__name.required:after {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  color: #f00;
+  content: 'required';
+  font-size: 10px;
+  padding: 5px;
+  position: relative;
+  top: -6px;
+}
+.swagger-ui table tbody tr td:first-of-type {
+  vertical-align: middle;
+  padding: 10px 0 0;
+}
+.swagger-ui .response-col_links {
+  min-width: 16em;
+}

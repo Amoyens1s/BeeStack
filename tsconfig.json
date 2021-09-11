@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "baseUrl": "./",
+    "incremental": true,
+    "outDir": "./dist",
+    "paths": {
+      "@test/test": [
+        "libs/test/src"
+      ],
+      "@test/test/*": [
+        "libs/test/src/*"
+      ],
+      "@tools": [
+        "libs/tools/src"
+      ],
+      "@tools/interface": [
+        "libs/tools/src/interface"
+      ],
+      "@plugin-a/plugin-a": [
+        "libs/plugin-a/src"
+      ],
+      "@plugin-a/plugin-a/*": [
+        "libs/plugin-a/src/*"
+      ]
+    }
+  }
+}
