@@ -39,10 +39,10 @@ export class CreateUserDto {
 
   @ApiProperty({
     description: '用户权限',
-    example: ['master'],
+    example: 'master',
     type: 'Array',
   })
-  readonly permission: string[];
+  readonly role: string;
 
   @ApiProperty({
     description: '有效令牌',

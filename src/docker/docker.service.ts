@@ -6,20 +6,22 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './user.schema';
 import { remove } from 'lodash';
 import { decodePayload } from '@tools';
+import { Docker } from './docker.schema';
+import * as Dockerode from 'dockerode';
 
 @Injectable()
-export class UserService implements OnModuleInit {
-  constructor(@InjectModel('user') private readonly userModel: Model<User>) {}
+export class DockerService implements OnModuleInit {
+  docker: Dockerode;
+
+  constructor(
+    @InjectModel('docker') private readonly dockerModel: Model<Docker>,
+  ) {}
 
   onModuleInit() {
-    setInterval(() => {
-      this.removeInvalidToken();
-    }, 5000);
+    this.docker = new Dockerode();
+    this.docker.listImages();
   }
 
   async removeInvalidToken() {
@@ -33,29 +35,29 @@ export class UserService implements OnModuleInit {
           validToken.push(token);
         }
       });
-      await this.userModel.findByIdAndUpdate(user._id, { token: validToken });
+      await this.dockerModel.findByIdAndUpdate(user._id, { token: validToken });
     });
   }
 
-  async create(user: CreateUserDto) {
+  async create(user: any) {
     user.token = [];
-    return new this.userModel(user).save();
+    return new this.dockerModel(user).save();
   }
 
   async findAll() {
-    return this.userModel.find().exec();
+    return this.dockerModel.find().exec();
   }
 
   async findOne(id: string) {
     try {
-      return await this.userModel.findById(id).exec();
+      return await this.dockerModel.findById(id).exec();
     } catch (error) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
   }
 
   async findByEmail(email: string) {
-    return this.userModel
+    return this.dockerModel
       .find()
       .exec()
       .then((userList) => {
@@ -64,7 +66,7 @@ export class UserService implements OnModuleInit {
   }
 
   async findByPhoneNumber(phoneNumber: number) {
-    return this.userModel
+    return this.dockerModel
       .find()
       .exec()
       .then((userList) => {
@@ -72,21 +74,21 @@ export class UserService implements OnModuleInit {
       });
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
-    return this.userModel.findByIdAndUpdate(id, updateUserDto);
+  async update(id: string, updateUserDto: any) {
+    return this.dockerModel.findByIdAndUpdate(id, updateUserDto);
   }
 
   async addToken(userId: string, token: string) {
     const user = await this.findOne(userId);
     user.token.push(token);
-    return this.userModel.findByIdAndUpdate(userId, { token: user.token });
+    return this.dockerModel.findByIdAndUpdate(userId, { token: user.token });
   }
 
   async removeToken(userId: string, token: string) {
-    const user = await this.userModel.findById(userId).exec();
+    const user = await this.dockerModel.findById(userId).exec();
     if (user) {
       remove(user.token, (t) => t === token);
-      await this.userModel.findByIdAndUpdate(userId, { token: user.token });
+      await this.dockerModel.findByIdAndUpdate(userId, { token: user.token });
     } else {
       throw new HttpException(
         'Internal Server Error',
@@ -96,6 +98,6 @@ export class UserService implements OnModuleInit {
   }
 
   async remove(id: string) {
-    return this.userModel.findByIdAndRemove(id);
+    return this.dockerModel.findByIdAndRemove(id);
   }
 }
