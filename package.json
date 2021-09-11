@@ -1,10 +1,10 @@
 {
-  "name": "ng-blog-server",
-  "version": "0.0.1",
+  "name": "beestack",
+  "version": "0.0.0-alpha",
   "description": "",
   "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "private": false,
+  "license": "GPL2.0",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
