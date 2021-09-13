@@ -23,6 +23,7 @@ import { Roles } from '../auth/guards/roles.decorator';
 import { DockerService } from './docker.service';
 
 import * as Dockerode from 'dockerode';
+import { dockerInfo } from 'systeminformation';
 
 @ApiTags('Docker模块')
 @Controller('docker')
@@ -42,8 +43,7 @@ export class DockerController {
   @ApiOperation({ summary: 'Images List' })
   async findAll(@Res() res: Response) {
     const docker = new Dockerode();
-    console.log(await docker.listImages());
-    return res.status(HttpStatus.OK).json(await docker.listImages());
+    return res.status(HttpStatus.OK).json(await dockerInfo());
   }
 
   @Get(':id')

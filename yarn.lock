@@ -5961,6 +5961,11 @@ symbol-tree@^3.2.4:
   resolved "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
+systeminformation@^5.8.8:
+  version "5.8.8"
+  resolved "https://registry.npmjs.org/systeminformation/-/systeminformation-5.8.8.tgz#8a073a1e2cfa7a4285e60654f08b0f9b123bd29f"
+  integrity sha512-wss1OIzo2jP176PyNZ6W4LcMw7tytRltQJetu3S9BJ8ZHzPWd+R8C/UVLp8hOgQZlc/ADBQr4BlHVrLU9wsmXw==
+
 table@^6.0.9:
   version "6.7.1"
   resolved "https://registry.npmjs.org/table/-/table-6.7.1.tgz#ee05592b7143831a8c94f3cee6aae4c1ccef33e2"
