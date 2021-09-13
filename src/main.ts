@@ -29,6 +29,7 @@ async function bootstrap() {
     customCssUrl: '/css/swagger.css',
   });
 
+  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();
