@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
+import { SysteminfoModule } from './systeminfo/systeminfo.module';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/beestack', {
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
     AuthModule,
     DockerModule,
+    SysteminfoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
