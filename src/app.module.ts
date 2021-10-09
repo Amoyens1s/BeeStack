@@ -7,13 +7,15 @@ import { UserModule } from './user/user.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
-import { SysteminfoModule } from './systeminfo/systeminfo.module';
+import { CPUModule } from './cpu/cpu.module';
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/beestack', {
+    MongooseModule.forRoot('mongodb://121.5.111.250:27017/admin', {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
+      user: 'admin',
+      pass: '123456',
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, 'assets'),
@@ -21,7 +23,7 @@ import { SysteminfoModule } from './systeminfo/systeminfo.module';
     UserModule,
     AuthModule,
     DockerModule,
-    SysteminfoModule,
+    CPUModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -20,8 +20,9 @@ export class DockerService implements OnModuleInit {
   ) {}
 
   onModuleInit() {
-    this.docker = new Dockerode();
-    this.docker.listImages();
+    // windows下没找到docker sock，会有报错，暂时注释掉，等后续再解决
+    // this.docker = new Dockerode();
+    // this.docker.listImages();
   }
 
   async removeInvalidToken() {

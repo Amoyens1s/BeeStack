@@ -7,6 +7,7 @@ import {
 } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AuthModule } from './auth/auth.module';
+import { CPUModule } from './cpu/cpu.module';
 import { DockerModule } from './docker/docker.module';
 import { UserModule } from './user/user.module';
 
@@ -20,7 +21,7 @@ async function bootstrap() {
     .build();
 
   const options: SwaggerDocumentOptions = {
-    include: [UserModule, AuthModule, DockerModule],
+    include: [UserModule, AuthModule, CPUModule, DockerModule],
   };
 
   const document = SwaggerModule.createDocument(app, config, options);

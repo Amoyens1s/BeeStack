@@ -15,9 +15,6 @@
       "@test/test": [
         "libs/test/src"
       ],
-      "@test/test/*": [
-        "libs/test/src/*"
-      ],
       "@tools": [
         "libs/tools/src"
       ],
@@ -26,9 +23,6 @@
       ],
       "@plugin-a/plugin-a": [
         "libs/plugin-a/src"
-      ],
-      "@plugin-a/plugin-a/*": [
-        "libs/plugin-a/src/*"
       ]
     }
   }
