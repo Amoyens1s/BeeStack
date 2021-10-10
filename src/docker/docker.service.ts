@@ -1,29 +1,29 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  OnModuleInit,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { remove } from 'lodash';
 import { decodePayload } from '@tools';
 import { Docker } from './docker.schema';
 import * as Dockerode from 'dockerode';
+import { platform } from 'process';
 
 @Injectable()
-export class DockerService implements OnModuleInit {
-  docker: Dockerode;
+export class DockerService {
+  get dockerode(): Dockerode {
+    if (platform === 'win32') {
+      return new Dockerode({
+        socketPath: '//./pipe/docker_engine',
+      });
+    } else {
+      return new Dockerode({
+        socketPath: '/var/run/docker.sock',
+      });
+    }
+  }
 
   constructor(
     @InjectModel('docker') private readonly dockerModel: Model<Docker>,
   ) {}
-
-  onModuleInit() {
-    // windows下没找到docker sock，会有报错，暂时注释掉，等后续再解决
-    // this.docker = new Dockerode();
-    // this.docker.listImages();
-  }
 
   async removeInvalidToken() {
     const date = new Date().getTime();

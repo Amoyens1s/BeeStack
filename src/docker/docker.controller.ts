@@ -40,10 +40,11 @@ export class DockerController {
   }
 
   @Get('ps')
-  @ApiOperation({ summary: 'Images List' })
+  @ApiOperation({ summary: 'containers List' })
   async findAll(@Res() res: Response) {
-    const docker = new Dockerode();
-    return res.status(HttpStatus.OK).json(await dockerInfo());
+    return res
+      .status(HttpStatus.OK)
+      .json(await this.dockerService.dockerode.listContainers());
   }
 
   @Get(':id')
