@@ -8,6 +8,10 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { CPUModule } from './cpu/cpu.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { MemoryModule } from './memory/memory.module';
+console.log(__dirname);
+
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://121.5.111.250:27017/admin', {
@@ -17,13 +21,20 @@ import { CPUModule } from './cpu/cpu.module';
       user: 'admin',
       pass: '123456',
     }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'assets'),
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql'],
+      installSubscriptionHandlers: true,
+      playground: true,
     }),
+    // 静态文件服务器有点问题，会导致graphql的playground崩溃
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '../assets'),
+    // }),
     UserModule,
     AuthModule,
     DockerModule,
     CPUModule,
+    MemoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,0 +1,30 @@
+type Query {
+  memory: Memory
+}
+
+type Memory {
+  # 总内存
+  total: Float,
+  # 未使用的内存
+  free: Float,
+  # 已使用的内存（包括buffers/cache）
+  used: Float,
+  # 已使用的内存（不包括buffers/cache）
+  active: Float,
+  # 可用内存（total - active）
+  available: Float,
+  # buffer和cache使用的内存
+  buffcache: Float,
+  # buffer使用的内存
+  buffers: Float,
+  # cache使用的内存
+  cached: Float,
+  # 内核数据结构slab的大小，可以减少申请和释放内存带来的消耗
+  slab: Float,
+  # 交换空间总量
+  swaptotal: Float,
+  # 已使用的交换空间
+  swapused: Float,
+  # 未使用的交换空间
+  swapfree: Float
+}
