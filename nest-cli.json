@@ -17,15 +17,6 @@
     "webpack": true
   },
   "projects": {
-    "test": {
-      "type": "library",
-      "root": "libs/test",
-      "entryFile": "index",
-      "sourceRoot": "libs/test/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/test/tsconfig.lib.json"
-      }
-    },
     "tools": {
       "type": "library",
       "root": "libs/tools",

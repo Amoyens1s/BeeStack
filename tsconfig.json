@@ -12,9 +12,6 @@
     "incremental": true,
     "outDir": "./dist",
     "paths": {
-      "@test/test": [
-        "libs/test/src"
-      ],
       "@tools": [
         "libs/tools/src"
       ],
