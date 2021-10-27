@@ -42,6 +42,6 @@ export class MemoryService implements OnModuleInit {
   }
 
   async getMemory() {
-    return await mem();
+    return mem();
   }
 }
