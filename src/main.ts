@@ -20,6 +20,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
+  // swagger文档只提供RESTful API
   const options: SwaggerDocumentOptions = {
     include: [UserModule, AuthModule, CPUModule, DockerModule],
   };
