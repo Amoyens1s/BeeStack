@@ -6,6 +6,6 @@ export class MemoryResolver {
   constructor(private readonly memoryService: MemoryService) {}
   @Query('memory')
   async getMemory() {
-    return await this.memoryService.getMemory();
+    return this.memoryService.getMemory();
   }
 }
