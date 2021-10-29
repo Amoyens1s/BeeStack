@@ -1,5 +1,15 @@
 type Query {
-  memory: Memory
+  memory: Memory,
+  memoryTimeSeries(
+    """
+    起始时间
+    """
+    from: Float!,
+    """
+    结束时间
+    """
+    to: Float!
+  ): [MemoryTimeSeries]
 }
 
 type Memory {
@@ -27,4 +37,26 @@ type Memory {
   swapused: Float,
   # 未使用的交换空间
   swapfree: Float
+}
+
+"""
+内存使用率的时序数据
+"""
+type MemoryTimeSeries {
+  """
+  毫秒数时间戳
+  """
+  timestamp: Float,
+  """
+  内存使用率，精度为小数点后一位
+  """
+  usage: Float,
+  """
+  已使用的内存，单位bit
+  """
+  used: Float,
+  """
+  总内存，单位bit
+  """
+  total: Float
 }
