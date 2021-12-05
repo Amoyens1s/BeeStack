@@ -2,9 +2,9 @@
   "name": "beestack",
   "version": "0.0.0-alpha",
   "description": "",
-  "author": "",
+  "author": "amoyensis",
   "private": false,
-  "license": "GPL3.0",
+  "license": "GPL-3.0",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
