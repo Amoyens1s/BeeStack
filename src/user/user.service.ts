@@ -10,7 +10,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './user.schema';
 import { remove } from 'lodash';
-import { decodePayload } from '@tools';
+import { decodePayload, encodePayload, parseToken } from '@tools';
 
 @Injectable()
 export class UserService implements OnModuleInit {
@@ -85,7 +85,7 @@ export class UserService implements OnModuleInit {
   async removeToken(userId: string, token: string) {
     const user = await this.userModel.findById(userId).exec();
     if (user) {
-      remove(user.token, (t) => t === token);
+      remove(user.token, (t) => t === encodePayload(parseToken(token)));
       await this.userModel.findByIdAndUpdate(userId, { token: user.token });
     } else {
       throw new HttpException(

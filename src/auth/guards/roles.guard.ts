@@ -12,6 +12,10 @@ export class RolesGuard implements CanActivate {
     }
     const request = context.switchToHttp().getRequest();
     const user = request.headers.authorization;
+    if (!user) {
+      // 如果未携带token，直接false
+      return false;
+    }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [type, token] = user.split(' ');
     const role = parseToken(token).role;
