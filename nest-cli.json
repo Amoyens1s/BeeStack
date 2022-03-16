@@ -3,7 +3,8 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "assets": [
-      "../assets/**/*"
+      { "include": "../assets/**/*" },
+      { "include": "./**/*.graphql", "outDir": "./dist/src" }
     ],
     "plugins": [
       {

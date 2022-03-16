@@ -1,6 +1,12 @@
 {
   "cSpell.words": [
-    "prebuild"
+    "amoyensis",
+    "beestack",
+    "dockerode",
+    "nestjs",
+    "prebuild",
+    "systeminformation"
   ],
-  "commentTranslate.targetLanguage": "zh-CN"
+  "commentTranslate.targetLanguage": "zh-CN",
+  "i18n-ally.localesPaths": []
 }
